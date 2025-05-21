@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h2 class="text-2xl font-semibold mb-4">Vista Previa de Videos</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {% for video in videos %}
+    <div class="h-full">
+        <video controls width="100%" height="auto" class="w-full max-w-full h-auto">
+            <source src="{{ url_for('serve_video', filename=video) }}" type="video/mp4"> 
+            Your browser does not support the video tag.
+        </video>
+        <p class="mt-2">{{ video }}</p>
+        <p>Videos detectados: {{ videos | length }}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

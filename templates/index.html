@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor para redes sociales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-sky-950 text-white">
+    <!-- Navbar -->
+    <nav class="bg-black text-white gap-12 p-4 flex items-center">
+        <h1 class="text-xl font-bold"><a href="/" class="hover:underline hover:text-sky-500">Media Editor</a></h1>
+        <div class="space-x-4">
+            <a href="/imagenes" class="hover:underline hover:text-sky-500">Procesar Imágenes</a>
+            <a href="/videos" class="hover:underline hover:text-sky-500">Procesar Videos</a>
+        </div>
+    </nav>
+
+    <!-- Contenido de cada página -->
+    <section class="flex">
+        {% block content %}{% endblock %}
+    </section>
+</body>
+</html>

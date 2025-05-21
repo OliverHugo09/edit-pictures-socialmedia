@@ -1,0 +1,49 @@
+    {% extends 'index.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center">Sube tus imágenes</h1>
+
+    <form id="uploadForm" class="bg-gray-800 p-6 rounded-lg shadow" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="images" multiple class="mb-4 block w-full text-white" accept="image/*">
+    
+        <div class="mb-4">
+            <label class="block font-semibold mb-2">Selecciona los formatos:</label>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="networks" value="instagram" checked>
+                    Instagram
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="networks" value="tiktok" checked>
+                    TikTok
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="networks" value="facebook">
+                    Facebook
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="networks" value="x">
+                    X (Twitter)
+                </label>
+            </div>
+        </div>
+    
+        <button class="bg-blue-600 px-4 py-2 rounded hover:bg-blue-700" type="submit">Procesar Imágenes</button>
+    </form>        
+
+    <div id="preview" class="mt-10">
+        {% if previews %}
+            <h2 class="text-xl font-semibold mb-4">Vistas Previas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {% for preview in previews %}
+                    <div class="bg-gray-800 p-4 rounded">
+                        <h3 class="text-center mb-2 font-bold capitalize">{{ preview.network }}</h3>
+                        <img src="{{ preview.path }}" alt="{{ preview.network }}" class="w-full rounded shadow">
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
